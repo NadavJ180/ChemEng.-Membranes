@@ -44,12 +44,24 @@ cutoff_2 = find_cutoff(mw_2, R2)
 plt.figure(figsize=(10, 6))
 plt.plot(mw_1, R1, 'o-', label='Membrane 1')
 plt.plot(mw_2, R2, 's-', label='Membrane 2')
-plt.hlines(y=0.9, xmin=0, xmax=max(cutoff_1, cutoff_2), color='red', linestyle='--', label='90% Rejection')
-plt.vlines(x=cutoff_1, ymin=0, ymax=0.9, color='blue', linestyle='--', label=f'Membrane 1 Cutoff: {cutoff_1:.2f} 'r'$\frac{g}{mol}$')
-plt.vlines(x=cutoff_2, ymin=0, ymax=0.9, color='green', linestyle='--', label=f'Membrane 2 Cutoff: {cutoff_2:.2f} 'r'$\frac{g}{mol}$')
+plt.hlines(y=0.9, xmin=0, xmax=max(cutoff_1, cutoff_2), 
+           color='red', linestyle='--')
+plt.vlines(x=cutoff_1, ymin=0, ymax=0.9, color='blue', 
+           linestyle='--')
+plt.vlines(x=cutoff_2, ymin=0, ymax=0.9, color='green', 
+           linestyle='--')
 plt.xlabel(r'Molecular Weight ($\frac{g}{mol}$)')
 plt.ylabel('Rejection (R)')
+plt.ylim(0, 1.1)
+plt.xlim(0, max(mw_1 + mw_2) + 10)
 plt.title('Rejection vs Molecular Weight for Two Membranes')
 plt.legend()
+plt.plot(cutoff_1, 0.9, 'o', color='blue')
+plt.plot(cutoff_2, 0.9, 'o', color='green')
+plt.annotate(f'Membrane 1 MWCO: {cutoff_1:.2f} 'r'$\frac{g}{mol}$', xy=(cutoff_1, 0.5), xytext=(cutoff_1 + 10, 0.5),
+             arrowprops=dict(facecolor='blue', shrink=0.05), fontsize=10, color='blue')
+plt.annotate(f'Membrane 2 MWCO: {cutoff_2:.2f} 'r'$\frac{g}{mol}$', xy=(cutoff_2, 0.3), xytext=(cutoff_2 - 52, 0.3),
+             arrowprops=dict(facecolor='green', shrink=0.05), fontsize=10, color='green')
+plt.annotate('90% Rejection', xy=(3, 0.9), xytext=(3, 0.92), color='red', fontsize=10)
 plt.grid()
-plt.show()
+plt.show() 
