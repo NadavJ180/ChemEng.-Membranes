@@ -5,15 +5,15 @@ import matplotlib.pyplot as plt
 
 # Membrane 1
 
-C_f1 = [0.01, 0.015, 0.014, 0.05, 0.06, 0.065, 0.08, 0.1]
-C_p1 = [0.01, 0.0144, 0.0102, 0.0204, 0.00923, 0.00102, 0.000741, 0.000545]
-mw_1 = [10, 25, 35, 45, 57, 80, 85, 90] 
+C_f1 = [0.01, 0.015, 0.014, 0.05, 0.06, 0.065, 0.08, 0.1] #[M]
+C_p1 = [0.01, 0.0144, 0.0102, 0.0204, 0.00923, 0.00102, 0.000741, 0.000545] #[M]
+mw_1 = [10, 25, 35, 45, 57, 80, 85, 90] #[kDa]
 
 # Membrane 2
 
-C_f2 = [0.012, 0.01, 0.016, 0.03, 0.045, 0.068, 0.09, 0.11, 0.12, 0.014]
-C_p2 = [0.012, 0.00889, 0.011, 0.015, 0.01796, 0.0191, 0.02, 0.0174, 0.0136, 0.00103]
-mw_2 = [10, 25, 40, 55, 65, 80, 90, 105, 120, 140]
+C_f2 = [0.012, 0.01, 0.016, 0.03, 0.045, 0.068, 0.09, 0.11, 0.12, 0.014] #[M]
+C_p2 = [0.012, 0.00889, 0.011, 0.015, 0.01796, 0.0191, 0.02, 0.0174, 0.0136, 0.00103] #[M]
+mw_2 = [10, 25, 40, 55, 65, 80, 90, 105, 120, 140] #[kDa]
 
 # ---- Calculate Reection ----
 
@@ -50,7 +50,7 @@ plt.vlines(x=cutoff_1, ymin=0, ymax=0.9, color='blue',
            linestyle='--')
 plt.vlines(x=cutoff_2, ymin=0, ymax=0.9, color='green', 
            linestyle='--')
-plt.xlabel(r'Molecular Weight ($\frac{g}{mol}$)')
+plt.xlabel('Molecular Weight [kDa]')
 plt.ylabel('Rejection (R)')
 plt.ylim(0, 1.1)
 plt.xlim(0, max(mw_1 + mw_2) + 10)
@@ -58,9 +58,9 @@ plt.title('Rejection vs Molecular Weight for Two Membranes')
 plt.legend()
 plt.plot(cutoff_1, 0.9, 'o', color='blue')
 plt.plot(cutoff_2, 0.9, 'o', color='green')
-plt.annotate(f'Membrane 1 MWCO: {cutoff_1:.2f} 'r'$\frac{g}{mol}$', xy=(cutoff_1, 0.5), xytext=(cutoff_1 + 10, 0.5),
+plt.annotate(f'Membrane 1 MWCO: {cutoff_1:.2f} [kDa]', xy=(cutoff_1, 0.5), xytext=(cutoff_1 + 10, 0.5),
              arrowprops=dict(facecolor='blue', shrink=0.05), fontsize=10, color='blue')
-plt.annotate(f'Membrane 2 MWCO: {cutoff_2:.2f} 'r'$\frac{g}{mol}$', xy=(cutoff_2, 0.3), xytext=(cutoff_2 - 52, 0.3),
+plt.annotate(f'Membrane 2 MWCO: {cutoff_2:.2f} [kDa]', xy=(cutoff_2, 0.3), xytext=(cutoff_2 - 52, 0.3),
              arrowprops=dict(facecolor='green', shrink=0.05), fontsize=10, color='green')
 plt.annotate('90% Rejection', xy=(3, 0.9), xytext=(3, 0.92), color='red', fontsize=10)
 plt.grid()
